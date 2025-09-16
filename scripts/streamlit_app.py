@@ -7,13 +7,13 @@ import pandas as pd
 from PIL import Image
 import base64
 import matplotlib.pyplot as plt
+import sys
+import os
 
 try:
     from hyddown import HydDown
 except:
-    import sys
-    import os
-
+    
     hyddown_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", "src")
     sys.path.append(os.path.abspath(hyddown_path))
     from hyddown import HydDown

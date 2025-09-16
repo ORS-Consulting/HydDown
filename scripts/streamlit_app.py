@@ -37,7 +37,7 @@ def read_input():
     sideb = st.sidebar
 
     with sideb:
-         image_path = os.path.join(
+        image_path = os.path.join(
             os.path.abspath(os.path.dirname(__file__)),
             "..",
             "docs",

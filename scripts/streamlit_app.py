@@ -46,7 +46,7 @@ def read_input():
                 "Sketch.png",
             )
             icon = Image.open(image_path)
-            st.image(icon, use_column_width=True, caption="HydDown")
+            st.image(icon, use_container_width=True, caption="HydDown")
         except:
             pass
 

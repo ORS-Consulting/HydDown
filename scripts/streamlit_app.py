@@ -147,7 +147,7 @@ if __name__ == "__main__":
         "Real gas vessel pressurisation/depressurisation with heat transfer from gas to vessel and ambient and vice versa. Orifice size (Cd = 0.84) is specified for desired pressurisation/depressurisation rate."
     )
     my_expander.write(
-        "For more information about the calculations and validation of the code please refer to the [manual](https://github.com/andr1976/HydDown/raw/main/docs/MANUAL.pdf)"
+        "For more information about the calculations and validation of the code please refer to the [manual](https://github.com/ORS-Consulting/HydDown/raw/main/docs/MANUAL.pdf)"
     )
 
     df = hdown.get_dataframe()

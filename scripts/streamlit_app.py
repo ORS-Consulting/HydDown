@@ -42,23 +42,21 @@ def read_input():
             "..",
             "docs",
             "img",
+            "ORS_logo_JPEG.jpg",
+        )
+        icon = Image.open(image_path)
+        st.image(icon, use_container_width=True, caption="ORS Consulting HydDown App")
+
+        image_path = os.path.join(
+            os.path.abspath(os.path.dirname(__file__)),
+            "..",
+            "docs",
+            "img",
             "Sketch.png",
         )
         icon = Image.open(image_path)
         st.image(icon, use_container_width=True, caption="HydDown")
-        try:
-            image_path = os.path.join(
-                os.path.abspath(os.path.dirname(__file__)),
-                "..",
-                "docs",
-                "img",
-                "Sketch.png",
-            )
-            icon = Image.open(image_path)
-            st.image(icon, use_container_width=True, caption="HydDown")
-        except:
-            pass
-
+        
         with st.form(key="my_form"):
             submit_button = st.form_submit_button(label="Run calculation")
             heattran = st.checkbox("Include heat transfer", value=True)

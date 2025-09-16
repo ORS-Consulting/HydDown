@@ -65,7 +65,7 @@ def read_input():
             with c2:
                 length = st.text_input("Vessel length (m):", 0.463)
                 diam = st.text_input("Vessel diam (m):", 0.254)
-                thk = st.text_input("Vessel thichness (m):", 0.016)
+                thk = st.text_input("Vessel thickness (m):", 0.016)
                 orientation = st.selectbox(
                     "Vessel orientation", ("horizontal", "vertical")
                 )

@@ -45,7 +45,7 @@ def read_input():
             "ORS_logo_JPEG.jpg",
         )
         icon = Image.open(image_path)
-        st.image(icon, use_container_width=True, caption="ORS Consulting HydDown App")
+        st.image(icon, width=200, caption="ORS Consulting HydDown App")
 
         image_path = os.path.join(
             os.path.abspath(os.path.dirname(__file__)),

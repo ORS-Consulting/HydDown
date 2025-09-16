@@ -140,7 +140,7 @@ if __name__ == "__main__":
         hdown.run(disable_pbar=True)
 
     st.title("HydDown rigorous demo")
-    st.subheader(r"https://github.com/andr1976/HydDown")
+    st.subheader(r"https://github.com/ORS-consulting/HydDown")
     my_expander = st.expander("Description")
 
     my_expander.write(

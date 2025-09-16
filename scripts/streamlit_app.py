@@ -37,6 +37,15 @@ def read_input():
     sideb = st.sidebar
 
     with sideb:
+         image_path = os.path.join(
+                os.path.abspath(os.path.dirname(__file__)),
+                "..",
+                "docs",
+                "img",
+                "Sketch.png",
+            )
+        icon = Image.open(image_path)
+        st.image(icon, use_container_width=True, caption="HydDown")
         try:
             image_path = os.path.join(
                 os.path.abspath(os.path.dirname(__file__)),

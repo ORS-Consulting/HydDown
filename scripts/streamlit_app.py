@@ -52,6 +52,7 @@ def read_input():
             ),
             unsafe_allow_html=True,
         )
+        st.write("")
         #icon = Image.open(image_path)
         #st.image(icon, width=100, caption="ORS Consulting HydDown App")
         #st.logo(icon, size="large", link="http://www.ors-consulting.com", icon_image=None)

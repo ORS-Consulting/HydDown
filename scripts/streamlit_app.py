@@ -261,7 +261,7 @@ if __name__ == "__main__":
         
         **Key Features:**
         - **Real gas** vessel pressurisation/depressurisation with heat transfer from gas to vessel and ambient and vice versa. 
-        - Default Orifice size (Cd = 0.84) is specified for desired pressurisation/depressurisation rate.
+        - Default Orifice discharge coefficient (Cd = 0.84) is specified for desired pressurisation/depressurisation rate.
         - **Dynamic simulation**: Models the time-dependent pressure and temperature development in fluid and vessel wall
         - **First law flow process**: Heat and mass balances solved concurrently 
         - **Heat transfer calculation**: Heat transfer between vessel wall and fluid using both natural and forced convection
@@ -280,6 +280,14 @@ if __name__ == "__main__":
         - Extensive **validation** documented in the [manual](https://github.com/ORS-Consulting/HydDown/raw/main/docs/MANUAL.pdf)
         - **Paper published** in [Journal of Open Source Software](https://doi.org/10.21105/joss.03695)
         - The full program can also manage **1-D heat transfer in dual composites**, external **fire heat load**, different vessel geometries. 
+
+        **Tips and tricks**
+        - Eventually you may experience an error. This is typically due to a combination of a too large time step relative to a too high mass rate. Either decrease the time step and/or the orifice size.
+        - Check the results with a lower time step to see if the results change. If not - you're good to go, otherwise decrease the time step until the results are independent of the time step.
+        - Remember: For discharge simulation, the initial pressure must exceed the back pressure, and vice versa for filling the initial pressure shall be lower than the fill pressure.
+
+        **Disclaimer**
+        This app and the underlying code is provided free of charge under a BSD license. 
         
         """
         )

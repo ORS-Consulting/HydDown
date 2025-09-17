@@ -152,15 +152,7 @@ if __name__ == "__main__":
     input = read_input()
     hdown = HydDown(input)
     st.title("HydDown rigorous demo")
-    st.subheader(r"https://github.com/ORS-consulting/HydDown")
-    my_expander = st.expander("Description")
 
-    my_expander.write(
-        "Real gas vessel pressurisation/depressurisation with heat transfer from gas to vessel and ambient and vice versa. Orifice size (Cd = 0.84) is specified for desired pressurisation/depressurisation rate."
-    )
-    my_expander.write(
-        "For more information about the calculations and validation of the code please refer to the [manual](https://github.com/ORS-Consulting/HydDown/raw/main/docs/MANUAL.pdf)"
-    )
     if st.sidebar.button("Run Simulation", type="primary"):
         with st.spinner("Calculating, please wait...."):
             hdown.run(disable_pbar=True)
@@ -263,30 +255,26 @@ if __name__ == "__main__":
             """
         ## About This Simulation
         
-        This application simulates the pressure equalization process between a CO₂ tank and ship through a connecting pipe. 
+        This application simulates the depressurisation or filling of a vessel with gas. It was initially developed for hydrogen
+        but can be used for any single component gas and non-condensing gasseous mixtures. The thermal response of the fluid as
+        well as vessel wall is rigorously modelled. 
         
         **Key Features:**
-        - **Steady-state analysis**: Calculates final equilibrium conditions using a mass and energy balance
-        - **Dynamic simulation**: Models the time-dependent pressure equalization process with a first law approach for each vessel
-        - **Mass transfer calculation**: Estimates the amount of CO₂ transferred between vessels
-        - **Flow dynamics**: Includes pipe friction and compressible flow effects
-        - **Accurate thermodynamics**: Utilizes CoolProp for CO₂ property calculations (Span-Wagner EOS)
-        - **Optional pumping**: Allows simulation of additional CO₂ transfer via a pump
-        - **Complete data export**: Download all simulation data, graphs, and parameters in a convenient ZIP file
+        - Real gas vessel pressurisation/depressurisation with heat transfer from gas to vessel and ambient and vice versa. 
+        - Default Orifice size (Cd = 0.84) is specified for desired pressurisation/depressurisation rate.
+        - **Dynamic simulation**: Models the time-dependent pressure and temperature development in fluid and vessel wall
+        - **First law flow process**: Heat and mass balances solved concurrently 
+        - **Heat transfer calculation**: Heat transfer between vessel wall and fluid using both natural and forced convection
+        - **Wall heat transfer**: Thermal gradients are assumed negligible in the wall (Type I cylinder). 
+        - **Accurate thermodynamics**: Utilizes [CoolProp](https://coolprop.org/) for equation of state and property calculations
+        - **Complete data export**: Download all simulation data in a csv file
+
+        **Further information**
+        - Code available on [github](https://github.com/ORS-consulting/HydDown)
+        - [manual](https://github.com/ORS-Consulting/HydDown/raw/main/docs/MANUAL.pdf) available
+        - Extensive validation documented in the [manual](https://github.com/ORS-Consulting/HydDown/raw/main/docs/MANUAL.pdf)
+        - Paper published in [Journal of Open Source Software](https://doi.org/10.21105/joss.0369)
+        - The full program can also manage 1-D heat transfer in dual composites, external fire heat load, different vessel geometries. 
         
-        **Physical Process:**
-        The simulation models the transfer of CO₂ vapor from the higher pressure tank to the lower pressure ship compartment 
-        until pressure equilibrium is reached. The process accounts for:
-        - Thermodynamic properties of CO₂
-        - Pipe flow resistance
-        - Heat and mass balance
-        - Compressible gas flow dynamics
-        
-        **Download Features:**
-        After running a simulation, you can download:
-        - **Complete ZIP package**: All results, graphs (PNG), raw data (CSV), and input parameters
-        - **Raw simulation data**: Time-series data in CSV format for further analysis
-        - **Input parameters**: All simulation settings in JSON format
-        - **Results summary**: Key findings and calculations in JSON format
         """
         )

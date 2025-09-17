@@ -44,9 +44,17 @@ def read_input():
             "img",
             "ORS_logo_JPEG.jpg",
         )
-        icon = Image.open(image_path)
+        st.sidebar.markdown(
+            """<a href="https://www.ors-consulting.com">
+            <img src="data:image/png;base64,{}" width="25">
+            </a>""".format(
+                base64.b64encode(open(image_path, "rb").read()).decode()
+            ),
+            unsafe_allow_html=True,
+        )
+        #icon = Image.open(image_path)
         #st.image(icon, width=100, caption="ORS Consulting HydDown App")
-        st.logo(icon, size="large", link="http://www.ors-consulting.com", icon_image=None)
+        #st.logo(icon, size="large", link="http://www.ors-consulting.com", icon_image=None)
 
         image_path = os.path.join(
             os.path.abspath(os.path.dirname(__file__)),

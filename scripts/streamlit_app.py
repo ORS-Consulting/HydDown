@@ -1,4 +1,4 @@
-# HydDown hydrogen/other gas depressurisation
+# HydDown     hydrogen/other gas depressurisation
 # Copyright (c) 2021 Anders Andreasen
 # Published under an MIT license
 
@@ -44,7 +44,14 @@ def read_input():
             "img",
             "ORS_logo_JPEG.jpg",
         )
-        
+        st.markdown(
+            """<a href="https://www.ors-consulting.com">
+            <img src="data:image/png;base64,{}" width="100">
+            </a>""".format(
+                base64.b64encode(open(image_path, "rb").read()).decode()
+            ),
+            unsafe_allow_html=True,
+        )
         #icon = Image.open(image_path)
         #st.image(icon, width=100, caption="ORS Consulting HydDown App")
         #st.logo(icon, size="large", link="http://www.ors-consulting.com", icon_image=None)
@@ -147,21 +154,7 @@ if __name__ == "__main__":
 
     with st.spinner("Calculating, please wait...."):
         hdown.run(disable_pbar=True)
-    image_path = os.path.join(
-            os.path.abspath(os.path.dirname(__file__)),
-            "..",
-            "docs",
-            "img",
-            "ORS_logo_JPEG.jpg",
-        )
-    st.markdown(
-            """<a href="https://www.ors-consulting.com">
-            <img src="data:image/png;base64,{}" width="100" style='justify-content: end;'>
-            </a>""".format(
-                base64.b64encode(open(image_path, "rb").read()).decode()
-            ),
-            unsafe_allow_html=True,
-        )
+    
     st.title("HydDown rigorous demo")
     st.subheader(r"https://github.com/ORS-consulting/HydDown")
     my_expander = st.expander("Description")

@@ -152,10 +152,6 @@ if __name__ == "__main__":
 
     input = read_input()
     hdown = HydDown(input)
-
-    with st.spinner("Calculating, please wait...."):
-        hdown.run(disable_pbar=True)
-    
     st.title("HydDown rigorous demo")
     st.subheader(r"https://github.com/ORS-consulting/HydDown")
     my_expander = st.expander("Description")
@@ -166,91 +162,95 @@ if __name__ == "__main__":
     my_expander.write(
         "For more information about the calculations and validation of the code please refer to the [manual](https://github.com/ORS-Consulting/HydDown/raw/main/docs/MANUAL.pdf)"
     )
+    with st.spinner("Calculating, please wait...."):
+        hdown.run(disable_pbar=True)
+    
+    
 
-    df = hdown.get_dataframe()
-    file_name = st.text_input("Filename for saving data:", "saved_data")
-
-    st.markdown(get_table_download_link(df, file_name), unsafe_allow_html=True)
-
-    col1, col2 = st.columns(2)
-
-    if input["valve"]["flow"] == "discharge":
-        temp_data = pd.DataFrame(
-            {
-                "Time (s)": hdown.time_array,
-                "Fluid temperature (C)": hdown.T_fluid - 273.15,
-                "Wall temperature (C)": hdown.T_vessel - 273.15,
-                "Vent temperature (C)": hdown.T_vent - 273.15,
-            }
+        df = hdown.get_dataframe()
+        file_name = st.text_input("Filename for saving data:", "saved_data")
+    
+        st.markdown(get_table_download_link(df, file_name), unsafe_allow_html=True)
+    
+        col1, col2 = st.columns(2)
+    
+        if input["valve"]["flow"] == "discharge":
+            temp_data = pd.DataFrame(
+                {
+                    "Time (s)": hdown.time_array,
+                    "Fluid temperature (C)": hdown.T_fluid - 273.15,
+                    "Wall temperature (C)": hdown.T_vessel - 273.15,
+                    "Vent temperature (C)": hdown.T_vent - 273.15,
+                }
+            )
+        else:
+            temp_data = pd.DataFrame(
+                {
+                    "Time (s)": hdown.time_array,
+                    "Fluid temperature (C)": hdown.T_fluid - 273.15,
+                    "Wall temperature (C)": hdown.T_vessel - 273.15,
+                }
+            )
+    
+        pres_data = pd.DataFrame(
+            {"Time (s)": hdown.time_array, "Pressure (bar)": hdown.P / 1e5}
         )
-    else:
-        temp_data = pd.DataFrame(
-            {
-                "Time (s)": hdown.time_array,
-                "Fluid temperature (C)": hdown.T_fluid - 273.15,
-                "Wall temperature (C)": hdown.T_vessel - 273.15,
-            }
-        )
-
-    pres_data = pd.DataFrame(
-        {"Time (s)": hdown.time_array, "Pressure (bar)": hdown.P / 1e5}
-    )
-
-    fig, ax = plt.subplots(figsize=(5, 2))
-
-    ax.plot(
-        pres_data["Time (s)"],
-        pres_data["Pressure (bar)"],
-        "k",
-    )
-    ax.set_xlabel("Time (s)")
-    ax.set_ylabel("Pressure (bar)")
-    col1.pyplot(fig)
-
-    fig, ax = plt.subplots(figsize=(5, 2))
-
-    ax.plot(
-        temp_data["Time (s)"], temp_data["Fluid temperature (C)"], "k", label="Fluid"
-    )
-    ax.plot(
-        temp_data["Time (s)"], temp_data["Wall temperature (C)"], "k--", label="Wall"
-    )
-    if input["valve"]["flow"] == "discharge":
+    
+        fig, ax = plt.subplots(figsize=(5, 2))
+    
         ax.plot(
-            temp_data["Time (s)"],
-            temp_data["Vent temperature (C)"],
-            "k-.",
-            label="Vent",
+            pres_data["Time (s)"],
+            pres_data["Pressure (bar)"],
+            "k",
         )
-
-    ax.set_xlabel("Time (s)")
-    ax.set_ylabel("Temperature ($^\circ$C)")
-    ax.legend(loc="best")
-    col2.pyplot(fig)
-
-    mdot_data = pd.DataFrame(
-        {"Time (s)": hdown.time_array, "Mass rate (kg/s)": hdown.mass_rate}
-    )
-    mass_data = pd.DataFrame(
-        {"Time (s)": hdown.time_array, "Fluid inventory (kg)": hdown.mass_fluid}
-    )
-
-    fig, ax = plt.subplots(figsize=(5, 2))
-    ax.plot(
-        mdot_data["Time (s)"],
-        mdot_data["Mass rate (kg/s)"],
-        "k",
-    )
-    ax.set_xlabel("Time (s)")
-    ax.set_ylabel("Mass rate (kg/s)")
-    col1.pyplot(fig)
-
-    fig, ax = plt.subplots(figsize=(5, 2))
-    ax.plot(
-        mass_data["Time (s)"],
-        mass_data["Fluid inventory (kg)"],
-        "k",
-    )
-    ax.set_xlabel("Time (s)")
-    ax.set_ylabel("Fluid inventory (kg)")
-    col2.pyplot(fig)
+        ax.set_xlabel("Time (s)")
+        ax.set_ylabel("Pressure (bar)")
+        col1.pyplot(fig)
+    
+        fig, ax = plt.subplots(figsize=(5, 2))
+    
+        ax.plot(
+            temp_data["Time (s)"], temp_data["Fluid temperature (C)"], "k", label="Fluid"
+        )
+        ax.plot(
+            temp_data["Time (s)"], temp_data["Wall temperature (C)"], "k--", label="Wall"
+        )
+        if input["valve"]["flow"] == "discharge":
+            ax.plot(
+                temp_data["Time (s)"],
+                temp_data["Vent temperature (C)"],
+                "k-.",
+                label="Vent",
+            )
+    
+        ax.set_xlabel("Time (s)")
+        ax.set_ylabel("Temperature ($^\circ$C)")
+        ax.legend(loc="best")
+        col2.pyplot(fig)
+    
+        mdot_data = pd.DataFrame(
+            {"Time (s)": hdown.time_array, "Mass rate (kg/s)": hdown.mass_rate}
+        )
+        mass_data = pd.DataFrame(
+            {"Time (s)": hdown.time_array, "Fluid inventory (kg)": hdown.mass_fluid}
+        )
+    
+        fig, ax = plt.subplots(figsize=(5, 2))
+        ax.plot(
+            mdot_data["Time (s)"],
+            mdot_data["Mass rate (kg/s)"],
+            "k",
+        )
+        ax.set_xlabel("Time (s)")
+        ax.set_ylabel("Mass rate (kg/s)")
+        col1.pyplot(fig)
+    
+        fig, ax = plt.subplots(figsize=(5, 2))
+        ax.plot(
+            mass_data["Time (s)"],
+            mass_data["Fluid inventory (kg)"],
+            "k",
+        )
+        ax.set_xlabel("Time (s)")
+        ax.set_ylabel("Fluid inventory (kg)")
+        col2.pyplot(fig)

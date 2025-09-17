@@ -147,6 +147,13 @@ if __name__ == "__main__":
 
     with st.spinner("Calculating, please wait...."):
         hdown.run(disable_pbar=True)
+    image_path = os.path.join(
+            os.path.abspath(os.path.dirname(__file__)),
+            "..",
+            "docs",
+            "img",
+            "ORS_logo_JPEG.jpg",
+        )
     st.markdown(
             """<a href="https://www.ors-consulting.com">
             <img src="data:image/png;base64,{}" width="100">

@@ -67,46 +67,45 @@ def read_input():
         icon = Image.open(image_path)
         st.image(icon, use_container_width=True, caption="HydDown")
         
-        with st.form(key="my_form"):
-            submit_button = st.form_submit_button(label="Run calculation")
-            heattran = st.checkbox("Include heat transfer", value=True)
-            c1, c2 = st.columns(2)
+       
+        heattran = st.checkbox("Include heat transfer", value=True)
+        c1, c2 = st.columns(2)
 
-            with c2:
-                length = st.text_input("Vessel length (m):", 0.463)
-                diam = st.text_input("Vessel diam (m):", 0.254)
-                thk = st.text_input("Vessel thickness (m):", 0.016)
-                orientation = st.selectbox(
-                    "Vessel orientation", ("horizontal", "vertical")
-                )
-                orifice_diam = st.text_input("Orifice diam (mm):", 0.40)
-                orifice_diam = float(orifice_diam) / 1000
-                tstep = st.text_input("Time step (s):", 1.0)
+        with c2:
+            length = st.text_input("Vessel length (m):", 0.463)
+            diam = st.text_input("Vessel diam (m):", 0.254)
+            thk = st.text_input("Vessel thickness (m):", 0.016)
+            orientation = st.selectbox(
+                "Vessel orientation", ("horizontal", "vertical")
+            )
+            orifice_diam = st.text_input("Orifice diam (mm):", 0.40)
+            orifice_diam = float(orifice_diam) / 1000
+            tstep = st.text_input("Time step (s):", 1.0)
 
-            with c1:
-                pres = st.text_input("Initial pressure (bar):", 50.0)
-                pres = float(pres) * 1e5
+        with c1:
+            pres = st.text_input("Initial pressure (bar):", 50.0)
+            pres = float(pres) * 1e5
 
-                back_pressure = st.text_input("Fill/back pres. (bar):", 240)
-                back_pressure = float(back_pressure) * 1e5
+            back_pressure = st.text_input("Fill/back pres. (bar):", 240)
+            back_pressure = float(back_pressure) * 1e5
 
-                #fluid = st.selectbox('Select fluid', ('H2', 'He', 'N2', 'air', 'CH4', 'O2'))
-                fluid = st.selectbox('Select fluid', ('H2', 'NG', 'NG1', 'He', 'N2', 'air', 'CH4','O2'))
-                if fluid == 'NG':
-                    fluid = "Methane[0.89571]&Ethane[5.6739e-02]&Propane[2.30395e-02]&Butane[1.03E-02]&Pentane[2.67E-03]&CO2[0.84e-02]&N2[0.3080e-2]"
-                if fluid == 'NG1':
-                    fluid = "Methane[0.860231]&Ethane[0.078217]&Propane[0.033786]&Butane[9.210E-03]&Pentane[2.573E-03]&Hexane[3.560E-04]&CO2[1.206E-02]&N2[3.701E-03]"
-    
-                mode = st.selectbox('Select mode', ('filling', 'discharge'))
-                temp = st.text_input("Initial temp. (C):", 25)
-                temp = float(temp) + 273.15
-                end_time = st.text_input("End time (s):", 240)
+            #fluid = st.selectbox('Select fluid', ('H2', 'He', 'N2', 'air', 'CH4', 'O2'))
+            fluid = st.selectbox('Select fluid', ('H2', 'NG', 'NG1', 'He', 'N2', 'air', 'CH4','O2'))
+            if fluid == 'NG':
+                fluid = "Methane[0.89571]&Ethane[5.6739e-02]&Propane[2.30395e-02]&Butane[1.03E-02]&Pentane[2.67E-03]&CO2[0.84e-02]&N2[0.3080e-2]"
+            if fluid == 'NG1':
+                fluid = "Methane[0.860231]&Ethane[0.078217]&Propane[0.033786]&Butane[9.210E-03]&Pentane[2.573E-03]&Hexane[3.560E-04]&CO2[1.206E-02]&N2[3.701E-03]"
 
-            density = st.text_input("Vessel material density (kg/m3):", 7740)
-            density = float(density)
+            mode = st.selectbox('Select mode', ('filling', 'discharge'))
+            temp = st.text_input("Initial temp. (C):", 25)
+            temp = float(temp) + 273.15
+            end_time = st.text_input("End time (s):", 240)
 
-            cp = st.text_input("Vessel material heat capacity (J/kg K):", 470)
-            cp = float(cp)
+        density = st.text_input("Vessel material density (kg/m3):", 7740)
+        density = float(density)
+
+        cp = st.text_input("Vessel material heat capacity (J/kg K):", 470)
+        cp = float(cp)
 
     input = {}
     input["calculation"] = {}

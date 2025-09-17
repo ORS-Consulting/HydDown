@@ -270,11 +270,11 @@ if __name__ == "__main__":
         - **Complete data export**: Download all simulation data in a csv file
 
         **Further information**
-        - Code available on [github](https://github.com/ORS-consulting/HydDown)
-        - [manual](https://github.com/ORS-Consulting/HydDown/raw/main/docs/MANUAL.pdf) available
-        - Extensive validation documented in the [manual](https://github.com/ORS-Consulting/HydDown/raw/main/docs/MANUAL.pdf)
-        - Paper published in [Journal of Open Source Software](https://doi.org/10.21105/joss.0369)
-        - The full program can also manage 1-D heat transfer in dual composites, external fire heat load, different vessel geometries. 
+        - Code available on [**github**](https://github.com/ORS-consulting/HydDown)
+        - [**Manual**](https://github.com/ORS-Consulting/HydDown/raw/main/docs/MANUAL.pdf) available
+        - Extensive **validation** documented in the [manual](https://github.com/ORS-Consulting/HydDown/raw/main/docs/MANUAL.pdf)
+        - **Paper published** in [Journal of Open Source Software](https://doi.org/10.21105/joss.0369)
+        - The full program can also manage **1-D heat transfer in dual composites**, external **fire heat load**, different vessel geometries. 
         
         """
         )

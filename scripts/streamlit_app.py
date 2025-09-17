@@ -273,7 +273,7 @@ if __name__ == "__main__":
         - Code available on [**github**](https://github.com/ORS-consulting/HydDown)
         - [**Manual**](https://github.com/ORS-Consulting/HydDown/raw/main/docs/MANUAL.pdf) available
         - Extensive **validation** documented in the [manual](https://github.com/ORS-Consulting/HydDown/raw/main/docs/MANUAL.pdf)
-        - **Paper published** in [Journal of Open Source Software](https://doi.org/10.21105/joss.0369)
+        - **Paper published** in [Journal of Open Source Software](https://doi.org/10.21105/joss.03695)
         - The full program can also manage **1-D heat transfer in dual composites**, external **fire heat load**, different vessel geometries. 
         
         """

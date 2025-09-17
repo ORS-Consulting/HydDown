@@ -287,7 +287,7 @@ if __name__ == "__main__":
         - Remember: For discharge simulation, the initial pressure must exceed the back pressure, and vice versa for filling the initial pressure shall be lower than the fill pressure.
 
         **Disclaimer**
-        This app and the underlying code is provided free of charge under an MIT license. 
+        This app and the underlying code is provided free of charge under an [MIT license](https://github.com/ORS-Consulting/HydDown/blob/main/LICENSE). 
         For use please cite the paper in [Journal of Open Source Software](https://doi.org/10.21105/joss.03695).
 
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR

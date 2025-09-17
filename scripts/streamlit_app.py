@@ -156,7 +156,7 @@ if __name__ == "__main__":
         )
     st.markdown(
             """<a href="https://www.ors-consulting.com">
-            <img src="data:image/png;base64,{}" width="100">
+            <img src="data:image/png;base64,{}" width="100" style='display: block; margin: 0 auto;'>
             </a>""".format(
                 base64.b64encode(open(image_path, "rb").read()).decode()
             ),

@@ -260,7 +260,7 @@ if __name__ == "__main__":
         well as vessel wall is rigorously modelled. 
         
         **Key Features:**
-        - Real gas vessel pressurisation/depressurisation with heat transfer from gas to vessel and ambient and vice versa. 
+        - **Real gas** vessel pressurisation/depressurisation with heat transfer from gas to vessel and ambient and vice versa. 
         - Default Orifice size (Cd = 0.84) is specified for desired pressurisation/depressurisation rate.
         - **Dynamic simulation**: Models the time-dependent pressure and temperature development in fluid and vessel wall
         - **First law flow process**: Heat and mass balances solved concurrently 
@@ -269,6 +269,11 @@ if __name__ == "__main__":
         - **Accurate thermodynamics**: Utilizes [CoolProp](https://coolprop.org/) for equation of state and property calculations
         - **Complete data export**: Download all simulation data in a csv file
 
+        **Key questions answered**
+        - What is the required time for depressurisation/pressurisation? 
+        - What is the minimum/maximum temperature of the vessel wall during filling/discharge?
+        - What is the temperature of the gas vented during depressurisation?
+        
         **Further information**
         - Code available on [**github**](https://github.com/ORS-consulting/HydDown)
         - [**Manual**](https://github.com/ORS-Consulting/HydDown/raw/main/docs/MANUAL.pdf) available
